@@ -8,7 +8,11 @@ import weka.core.*;
 
 class bayes{
 	
-	void predict(String trainpath,String testpath) throws Exception{
+	String trainpath = "C:\\Users\\lenovo\\Documents\\trainingset\\trainset.csv";
+	String testpath = "C:\\Users\\lenovo\\Documents\\trainingset\\testset.csv";
+	String trainpath1 = "C:\\Users\\lenovo\\Documents\\trainingset\\trainset1.csv";
+	
+	boolean predict(String trainpath,String testpath) throws Exception{
 		
 		BufferedReader breader = null;	
 		Instances train = new Instances(
@@ -38,25 +42,26 @@ class bayes{
 		BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\lenovo\\Documents\\trainingset\\hasil.csv"));
 		
 		String result = labeled.toString().split("\n")[labeled.toString().split("\n").length-1];
+		
 		if(result.split(",")[result.split(",").length-1].contains("Yes")){
-			System.out.println("there is a LBLOCA");
+			return true;
 		}else{
-			System.out.println("there is a small break LOCA");
+			return false;
 		}
 	}
-}
-/*
-
-public class nearestneighbour {
-
-	public static void main(String[] args) throws Exception{
-		// TODO Auto-generated method stub
-		
-	String traindir = "C:\\Users\\lenovo\\Documents\\trainingset\\trainset.csv";
-	String testdir = "C:\\Users\\lenovo\\Documents\\trainingset\\testset.csv";
-	knn classifier = new knn();
-	classifier.predict(traindir,testdir);
+	
+	void go()throws Exception{
+		if(predict(trainpath,testpath)){
+			System.out.println("There is a LBLOCA");
+		}else{
+			if(predict(trainpath1,testpath)){
+				System.out.println("there is a SBLOCA");
+			}else{
+				System.out.println("normal");
+			}
+		}
 	}
-
+	
+	
 }
-*/
+
