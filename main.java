@@ -124,7 +124,7 @@ public class main {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 	
-		finder c = new finder("C:\\r5\\r3d434ie\\run\\lbpwrSiCtrck.o");
+		finder c = new finder("output of RELAP5-3D");
 		
 		System.out.println(c.search("bclpdmss"));
 		System.out.println(c.search("cormass"));
@@ -132,10 +132,9 @@ public class main {
 		System.out.println(c.search("dnmass"));
 		String[] input = {"bclpdmss","cormass","bhlmass","dnmass"};
 		c.write(input);
-		String traindir = "C:\\Users\\lenovo\\Documents\\trainingset\\trainset.csv";
-		String testdir = "C:\\Users\\lenovo\\Documents\\trainingset\\testset.csv";
+		
 		bayes classifier = new bayes();
-		classifier.predict(traindir,testdir);
+		classifier.go();
 	
 	}
 
